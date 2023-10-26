@@ -17,10 +17,27 @@ btn.addEventListener('click', (e) => {
 
 
 window.addEventListener('scroll', () => {
-    const pageTop = document.querySelector('#page-top')
+    const pageTop = document.querySelector('#page-top');
+    const opens = pageTop.classList.contains('open');
+
     if (window.scrollY >= 300) {
+        if (!opens) {
+            pageTop.animate({
+                translate: ['0 4rem', 0],
+                opacity: [0, 1]
+            },500);
+        }
+
         pageTop.classList.add('open');
     } else {
+
+        if (opens) {
+            pageTop.animate({
+                translate: [0, '0 4rem'],
+                opacity: [1, 0]
+            },500);
+        }
+
         pageTop.classList.remove('open');
     };
 });
